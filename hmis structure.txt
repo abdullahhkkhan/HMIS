@@ -1,0 +1,81 @@
+hmis-project/
+│── backend/                # Node.js + Express + MongoDB
+│   ├── src/
+│   │   ├── config/          # Database & environment configs
+│   │   │   └── db.js
+│   │   ├── models/          # MongoDB Schemas
+│   │   │   ├── Patient.js
+│   │   │   ├── User.js
+│   │   │   ├── DoctorVisit.js
+│   │   │   ├── PharmacyVisit.js
+│   │   │   ├── Medicine.js
+│   │   │   └── Counter.js
+│   │   ├── routes/          # Express routes
+│   │   │   ├── authRoutes.js
+│   │   │   ├── patientRoutes.js
+│   │   │   ├── doctorRoutes.js
+│   │   │   ├── pharmacyRoutes.js
+│   │   │   └── medicineRoutes.js
+│   │   ├── controllers/     # Business logic
+│   │   │   ├── authController.js
+│   │   │   ├── patientController.js
+│   │   │   ├── doctorController.js
+│   │   │   ├── pharmacyController.js
+│   │   │   └── medicineController.js
+│   │   ├── middlewares/     # Authentication / Error handlers
+│   │   │   └── authMiddleware.js
+│   │   ├── utils/           # Helper functions (generate MR#, JWT, etc.)
+│   │   │   └── token.js
+│   │   ├── app.js           # Express app setup
+│   │   └── server.js        # Server start file
+│   ├── .env                 # Environment variables
+│   ├── package.json
+│   └── README.md
+│
+│── frontend/                # React (Vite/CRA/Next.js, your choice)
+│   ├── src/
+│   │   ├── api/             # API services (fetch to backend)
+│   │   │   ├── authApi.ts
+│   │   │   ├── patientApi.ts
+│   │   │   ├── doctorApi.ts
+│   │   │   ├── pharmacyApi.ts
+│   │   │   └── medicineApi.ts
+│   │   ├── components/      # Reusable components
+│   │   │   ├── forms/
+│   │   │   ├── layout/
+│   │   │   └── ui/
+│   │   ├── modules/         # Feature-specific pages
+│   │   │   ├── auth/
+│   │   │   │   ├── Login.tsx
+│   │   │   │   ├── RegisterUser.tsx
+│   │   │   ├── registration/
+│   │   │   │   ├── NewPatientForm.tsx
+│   │   │   │   ├── PatientList.tsx
+│   │   │   ├── doctors/
+│   │   │   │   ├── DoctorDashboard.tsx
+│   │   │   │   ├── VitalsForm.tsx
+│   │   │   │   ├── GeneralPhysician.tsx
+│   │   │   │   ├── Derma.tsx
+│   │   │   │   ├── Eye.tsx
+│   │   │   │   └── Gynea.tsx
+│   │   │   ├── pharmacy/
+│   │   │   │   ├── PharmacyDashboard.tsx
+│   │   │   │   └── DispenseMedicine.tsx
+│   │   │   └── admin/
+│   │   │       ├── Dashboard.tsx
+│   │   │       └── Reports.tsx
+│   │   ├── routes/          # React Router setup
+│   │   │   └── AppRoutes.tsx
+│   │   ├── store/           # State management (Redux/Zustand)
+│   │   │   ├── authSlice.ts
+│   │   │   ├── patientSlice.ts
+│   │   │   └── doctorSlice.ts
+│   │   ├── utils/           # Helpers (format MR#, date, etc.)
+│   │   ├── App.tsx
+│   │   └── main.tsx
+│   ├── index.html
+│   ├── package.json
+│   └── vite.config.ts
+│
+│── docker-compose.yml       # Optional if you want DB + backend setup
+│── README.md

@@ -1,0 +1,45 @@
+Navbar:
+1-Pages according to the role.
+2-Save as pending until it does't visit all of the modules of the reffered role.
+3-confirm visit and Save afer all modules are visited.
+
+Pages:
+
+Role:
+
+1.Admin
+
+1-Login Page
+2-Registration Page
+3-Waiting Patient or Patient List Page{reffered doctor, patient details, reffered medicines can be edited or changed by selecting patient from the list.}
+4-PatientHistory Page
+  It will show modules and fields which will fetch the data entered from history modules
+  Modules:
+	Patient Vitals
+	Medicine suggestion
+	Patient Health Details
+5-Dispensary Page
+6-Medicine adding Page
+7-User Management Page
+
+2. Registration:
+
+1-Login Page
+2-Registration Page
+
+3. General physician:
+
+1-Login Page
+2-Waiting Patient or Patient List Page
+3-PatientHistory Page
+  It will show modules and fields which will fetch the data entered from history modules
+  Modules:
+	Patient Vitals
+	Medicine suggestion
+	Patient Health Details
+
+4. Dispensary:
+
+1-Login Page
+2-Waiting Patient or Patient List Page
+3-Dispensary Page

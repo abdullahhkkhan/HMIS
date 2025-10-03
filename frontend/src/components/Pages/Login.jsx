@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import hmis_logo from '../../assets/images/hmis_logo (1).png';
-import bg_logo from '../../assets/images/bglogo.jpg';
+import hmis_logo from '../../assets/images/hmis_logo.png';
 
 const Login = () => {
   const [role, setRole] = useState("");
@@ -18,7 +17,7 @@ const Login = () => {
       <div className="w-full max-w-md p-8 rounded-2xl backdrop-blur-md bg-white/10 border border-white/20 shadow-lg">
         {/* Heading */}
         {/* <div className="flex space-x-4"> */}
-            <img src={hmis_logo} alt="HMIS Logo" className="flex justify-self-center mb-4 w-[260px] h-auto" />
+            <img src={hmis_logo} alt="HMIS Logo" className="flex justify-self-center w-auto h-[50vh] -mt-[80px] -mb-[80px]" />
             {/* <h2 className="text-2xl font-bold text-center mb-6 text-white">
                 HMIS
             </h2> */}

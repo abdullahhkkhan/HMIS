@@ -5,7 +5,7 @@ import { FaSearch } from "react-icons/fa";
 import { IoHome } from "react-icons/io5";
 import { LuHistory } from "react-icons/lu";
 import { RiHealthBookFill } from "react-icons/ri";
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { FaUserDoctor } from "react-icons/fa6";
 
 export default function Navbar() {
@@ -49,35 +49,37 @@ export default function Navbar() {
                 <div></div>
             </div>
             <nav className='flex justify-around bg-[#1f293f] text-white px-16 py-4'>
-                <a href='/dashboard' className={`flex space-x-2 ${
+                <Link to='/dashboard' className={`flex space-x-2 hover:text-white ${
                             location.pathname === '/dashboard' ? 'text-white' : 'text-gray-400'
                         }`}>
                     <IoHome className='text-lg mt-1 cursor-pointer' />
                     <h1 className='text-lg cursor-pointer'>Dashboard</h1>
-                </a>
-                <a href='/patient-registration' className={`flex space-x-2 ${
+                </Link>
+                <Link to='/patient-registration' className={`flex space-x-2 hover:text-white ${
                             location.pathname === '/patient-registration' ? 'text-white' : 'text-gray-400'
                         }`}>
                     <MdOutlineAppRegistration className='text-xl mt-1 cursor-pointer' />
                     <h1 className='text-lg cursor-pointer'>Patient Registration</h1>
-                </a>
-                <a href='/patient-history' className={`flex space-x-2 ${
+                </Link>
+                <Link to='/patient-history' className={`flex space-x-2 hover:text-white ${
                             location.pathname === '/patient-history' ? 'text-white' : 'text-gray-400'
                         }`}>
                     <LuHistory className='text-lg mt-1 cursor-pointer' />
                     <h1 className='text-lg cursor-pointer'>Patient History</h1>
-                </a>
-                <div className='flex space-x-2 text-gray-400 hover:text-white'>
+                </Link>
+                <Link to='/doctor-consultation' className={`flex space-x-2 hover:text-white ${
+                            location.pathname === '/doctor-consultation' ? 'text-white' : 'text-gray-400'
+                        }`}>
                     <FaUserDoctor className='text-lg mt-1 cursor-pointer' />
-                    <h1 className='text-lg cursor-pointer'>Appointments</h1>
-                </div>
-                <a href='/waiting-patients' className={`flex space-x-2 ${
+                    <h1 className='text-lg cursor-pointer'>Doctor Consultation</h1>
+                </Link>
+                <Link to='/waiting-patients' className={`flex space-x-2 hover:text-white ${
                             location.pathname === '/waiting-patients' ? 'text-white' : 'text-gray-400'
                         }`}>
                     <RiHealthBookFill className='text-lg mt-1 cursor-pointer' />
                     <h1 className='text-lg cursor-pointer'>Waiting Patients</h1>
-                </a>
-                <div className='flex space-x-2 text-gray-400 hover:text-white'>
+                </Link>
+                <div className='flex space-x-2 hover:text-white text-gray-400 hover:text-white'>
                     <MdOutlinePayment className='text-xl mt-1 cursor-pointer' />
                     <h1 className='text-lg cursor-pointer'>Billing</h1>
                 </div>

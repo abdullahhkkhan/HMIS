@@ -4,6 +4,7 @@ import { LuHistory } from "react-icons/lu";
 import { FcStatistics } from "react-icons/fc";
 import { RiHealthBookFill } from "react-icons/ri";
 import { MdOutlinePayment } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -21,23 +22,23 @@ export default function Footer() {
         </div>
 
         {/* Center - Quick Links */}
-        <div className="flex flex-wrap justify-center gap-6 text-gray-400">
-          <a href="/dashboard" className="flex items-center space-x-1 hover:text-white">
+        {/* <div className="flex flex-wrap justify-center gap-6 text-gray-400">
+          <Link to="/dashboard" className="flex items-center space-x-1 hover:text-white">
             <IoHome className="text-lg" /> <span>Dashboard</span>
-          </a>
-          <a href="/history" className="flex items-center space-x-1 hover:text-white">
+          </Link>
+          <Link to="/history" className="flex items-center space-x-1 hover:text-white">
             <LuHistory className="text-lg" /> <span>Patient History</span>
-          </a>
-          <a href="/stats" className="flex items-center space-x-1 hover:text-white">
+          </Link>
+          <Link to="/stats" className="flex items-center space-x-1 hover:text-white">
             <FcStatistics className="text-lg" /> <span>Statistics</span>
-          </a>
-          <a href="/waiting" className="flex items-center space-x-1 hover:text-white">
+          </Link>
+          <Link to="/waiting" className="flex items-center space-x-1 hover:text-white">
             <RiHealthBookFill className="text-lg" /> <span>Waiting Patients</span>
-          </a>
-          <a href="/billing" className="flex items-center space-x-1 hover:text-white">
+          </Link>
+          <Link to="/billing" className="flex items-center space-x-1 hover:text-white">
             <MdOutlinePayment className="text-lg" /> <span>Billing</span>
-          </a>
-        </div>
+          </Link>
+        </div> */}
 
         {/* Right - Contact */}
         <div className="text-center md:text-right text-gray-400 mt-4 md:mt-0">
