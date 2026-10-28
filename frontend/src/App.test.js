@@ -1,8 +1,9 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from "@testing-library/react";
+import App from "./App";
 
-test('renders learn react link', () => {
+test("shows the sign-in page when logged out", () => {
+  localStorage.clear();
+  window.history.pushState({}, "", "/");
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  expect(screen.getByText(/Sign in to HMIS/i)).toBeInTheDocument();
 });

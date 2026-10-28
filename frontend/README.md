@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+# HMIS — Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React (Create React App) + Tailwind v4 (browser build, loaded in `public/index.html`).
 
-## Available Scripts
+```bash
+npm install
+npm start        # http://localhost:4000
+npm test
+npm run build
+```
 
-In the project directory, you can run:
+## Roles & pages (from `pages.txt`)
 
-### `npm start`
+| Role | Pages |
+|---|---|
+| Admin | Dashboard, Registration, Patient List (edit patient / referred doctor / medicines), Patient History, Dispensary, Medicines, User Management |
+| Registration | Registration |
+| Doctor (General Physician etc.) | Waiting Patients, Patient History |
+| Dispensary | Waiting Patients, Dispensary |
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Demo accounts (local demo data only): `admin/admin123`, `reception/reception123`, `drali/doctor123`, `pharmacy/pharmacy123`.
+Admin → user menu → **Reset demo data** restores the sample data.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Visit workflow
 
-### `npm test`
+1. **Registration** registers a new patient (MR # generated) or finds a returning one, and issues a token to a doctor.
+2. **Doctor** opens the patient from *Waiting Patients* → *Patient History* and completes three modules:
+   Patient Vitals → Health Details → Medicine Suggestion.
+   The visit stays **Pending** until all three are saved. **Confirm Visit** is only enabled after that.
+   The doctor can also refer the patient to another doctor.
+3. Confirmed visits with medicines go to the **Dispensary** queue. Issuing medicines deducts stock and completes the visit.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Structure
 
-### `npm run build`
+```
+src/
+  api/            fetch services per backend route (ready for the Express API, not wired yet)
+  components/
+    forms/        Field, Input, Select, ChoiceGroup, PrescriptionEditor
+    layout/       Layout, Navbar (role-based), Footer
+    ui/           Button, Card, Badge, Modal, Toast, PageHeader, StatCard, PatientBanner …
+  modules/
+    auth/         Login, RegisterUser (User Management)
+    registration/ NewPatientForm, PatientList, EditVisitModal
+    doctors/      PatientHistory, VitalsForm, HealthDetailsForm, MedicineSuggestion, VisitTimeline
+    pharmacy/     DispenseMedicine, MedicineInventory
+    admin/        Dashboard
+  routes/         AppRoutes (role guards), navConfig (which role sees which page)
+  store/          HmisStore (data + actions, saved in localStorage), seed (demo data)
+  utils/          constants, format, visits
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Until the backend exists, all data lives in the browser (`localStorage`). Each store action in
+`src/store/HmisStore.jsx` matches a function in `src/api/*` — swap the action body for the API call
+when the backend is ready.
